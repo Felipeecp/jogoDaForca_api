@@ -4,16 +4,14 @@ import org.jogoDaForca.models.Palavra;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import java.util.List;
 
 public class PalavrasDao {
 
     @PersistenceContext
     private EntityManager manager;
-    private boolean queryRealizada = false;
 
     public void salvar(Palavra palavra){
-        System.out.println("DAO: A nova palavra é "+ palavra);
         manager.persist(palavra);
     }
 
@@ -22,9 +20,8 @@ public class PalavrasDao {
         return manager.createQuery(jpql, Palavra.class).setParameter("id",id).getSingleResult();
     }
 
-    public String obterNomePalavraPorId(int id){
-       String jpql = "select p.nome from Palavra p where id = :id";
-       return manager.createQuery(jpql, String.class).setParameter("id",id).getSingleResult();
+    public List<Palavra> obterPalavras() {
+        String jpql = "select p from Palavra p";
+        return manager.createQuery(jpql,Palavra.class).getResultList();
     }
-
 }
