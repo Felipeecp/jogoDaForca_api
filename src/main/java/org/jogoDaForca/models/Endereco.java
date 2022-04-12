@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Endereco {
@@ -14,9 +15,17 @@ public class Endereco {
     @Id
     private Integer id;
 
+    @NotNull
+    private String logradouro;
+
+    @NotNull
     private String cidade;
 
+    @NotNull
+    private String estado;
+
     @Length(max = 8)
+    @NotNull
     private String cep;
 
     public Integer getId() {
@@ -50,5 +59,21 @@ public class Endereco {
                 ", cidade='" + cidade + '\'' +
                 ", cep='" + cep + '\'' +
                 '}';
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 }

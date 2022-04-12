@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Cartao {
@@ -13,10 +14,10 @@ public class Cartao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String numero;
     private String nome;
-    private String dataValidade;
+    private String numero;
     private String codigoSeguranca;
+    private String dataValidade;
 
     public Integer getId() {
         return id;

@@ -1,5 +1,6 @@
 package org.jogoDaForca.models;
 
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -13,21 +14,24 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @NotBlank
     private String nome;
 
-    @NotNull
+    @NotBlank
     private String email;
 
-    @NotNull
+    @NotBlank
     @Length(max = 11)
     private String cpf;
 
-    @NotNull
+    @NotBlank
+    private String celular;
+
+    @NotBlank
     private String senha;
 
-    @NotNull
-    private String logradouro;
+    @NotBlank
+    private Integer pontos = 0;
 
     @ManyToOne
     private Endereco endereco;
@@ -67,14 +71,6 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
@@ -91,17 +87,28 @@ public class Usuario {
         this.cartao = cartao;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", senha='" + senha + '\'' +
-                ", logradouro='" + logradouro + '\'' +
-                ", endereco=" + endereco +
-                ", cartao=" + cartao +
-                '}';
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public Integer getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(Integer pontos) {
+        this.pontos = pontos;
     }
 
     @Override
@@ -115,13 +122,5 @@ public class Usuario {
     @Override
     public int hashCode() {
         return Objects.hash(email, senha);
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 }
