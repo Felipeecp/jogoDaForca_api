@@ -17,6 +17,7 @@ O site deveria ter:
 Esta API REST foi desenvolvida para ser consumida pelo Frontend da aplicação (que pode ser acessado neste [repositorio](https://github.com/Felipeecp/jogoDaForca_angular))
 
 **Principais Rotas:**
+
 Palavras:
 * `GET` - Obter lista de palavras cadastradas no banco de dados
 * `POST` - Cadastrar novas palavras, com nome e categoria
